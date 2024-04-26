@@ -1,3 +1,5 @@
+# Cpts_440_instagram_fake_account_detection
+
 In the current digital age where social media platforms like Instagram play a pivotal role in our
 lives, the large amount of fake accounts threatens the user experience and the platform's integrity.
 These fake accounts, engaging in activities ranging from spam to scamming, present a significant
@@ -17,3 +19,12 @@ accounts that are correctly identified by the model. And lastly, specificity, wh
 proportion of actual genuine accounts that are correctly identified by the model.
 As a back-up, we have the Logistic Regression algorithm in mind, if the original plan using the
 Decision Trees algorithm fails or proves too challenging.
+
+
+### Prerequisites
+
+This project need to install package inside requirement.txt first:
+  ```sh
+  pip install -r requirements.txt
+  ```
+
