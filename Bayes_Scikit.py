@@ -9,7 +9,7 @@ from sklearn.naive_bayes import CategoricalNB, GaussianNB, MultinomialNB
 
 class NBC:
     def __init__(self):
-        self.df = pd.read_csv("./data/train.csv")
+        self.df = pd.read_csv("./data/total.csv")
         self.df_X = self.df.drop("fake", axis=1)
         self.df_y = self.df['fake']
 
