@@ -1,7 +1,7 @@
 import numpy as np
 
 class CustomLogisticRegression:
-    def __init__(self, C=1, learning_rate=.01, max_train_iterations=50, batch_size=None) -> None:
+    def __init__(self, C=1, learning_rate=.01, max_train_iterations=50) -> None:
         self.C = C # Regularization parameter
         self.learning_rate = learning_rate # Learning Rate
         self.weights = None # Weights

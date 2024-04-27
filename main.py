@@ -8,6 +8,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import accuracy_score
 from SVM import CustomSVM
 from Logistic_Regression_Scratch import CustomLogisticRegression
+from sklearn.linear_model import LogisticRegression
 
 #SVM
 train_df = pd.read_csv("./data/train.csv")
@@ -45,7 +46,7 @@ Prebuilt_NBC.predict()
 
 # Logistic Regression
 # Create and train the model
-logistic_regression = CustomLogisticRegression(C = 0, learning_rate=0.001, max_train_iterations=100, batch_size=100)
+logistic_regression = CustomLogisticRegression(C = 0, learning_rate=0.001, max_train_iterations=100)
 logistic_regression.fit(train_X, train_y)
 
 # Predict based on model
@@ -54,3 +55,14 @@ y_pred_LR = logistic_regression.predict(test_X)
 # Find accuracy
 lr_accuracy = accuracy_score(test_y, y_pred_LR)
 print(f"Custom Logistic Regression accuracy: {lr_accuracy * 100} %")
+
+# Sci-Kit learn Logistic Regression
+sci_log_regression = LogisticRegression()
+sci_log_regression.fit(train_X, train_y)
+
+y_pred_sci_lr = sci_log_regression.predict(test_X)
+
+lr_sci_accuracy = accuracy_score(test_y, y_pred_sci_lr)
+print(f"SciKit Logistic Regression accuracy: {lr_sci_accuracy * 100} %")
+
+
