@@ -45,7 +45,7 @@ Prebuilt_NBC.predict()
 
 # Logistic Regression
 # Create and train the model
-logistic_regression = CustomLogisticRegression(C=1.0, max_train_iterations=100)
+logistic_regression = CustomLogisticRegression(C = 0, learning_rate=0.001, max_train_iterations=100, batch_size=100)
 logistic_regression.fit(train_X, train_y)
 
 # Predict based on model
