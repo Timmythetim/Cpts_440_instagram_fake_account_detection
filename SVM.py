@@ -16,7 +16,7 @@ class CustomSVM:
             for j in range(n_samples):
                 K[i, j] = np.dot(X[i], X[j])
 
-        P = matrix(np.outer(y, y) * K)
+        P = matrix(K)
         q = matrix(-np.ones((n_samples, 1)))
         G = matrix(np.vstack((-np.eye(n_samples), np.eye(n_samples))))
         h = matrix(np.hstack((np.zeros(n_samples), np.ones(n_samples) * self.C)))
@@ -26,11 +26,11 @@ class CustomSVM:
         solution = solvers.qp(P, q, G, h, A, b)
         alphas = np.array(solution['x']).flatten()
 
-        threshold = 1e-5
+        threshold = 1e-12
         support_vector_indices = np.where(alphas > threshold)[0]
         self.support_vectors = X[support_vector_indices]
         self.support_vector_labels = y[support_vector_indices]
-
+        
         # Corrected calculation of weights
         self.weights = np.zeros(n_features)
         for i in range(len(support_vector_indices)):
