@@ -27,4 +27,11 @@ This project need to install package inside requirement.txt first:
   ```sh
   pip install -r requirements.txt
   ```
-
+Then, run the main.py
+  ```sh
+  python main.py
+  ```
+Or with python3:
+  ```sh
+  python3 main.py
+  ```
