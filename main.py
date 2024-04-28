@@ -9,8 +9,9 @@ from sklearn.metrics import accuracy_score
 from SVM import CustomSVM
 from Logistic_Regression_Scratch import CustomLogisticRegression
 from sklearn.linear_model import LogisticRegression
+from sklearn.svm import SVC
 
-#SVM
+# Data Processing
 train_df = pd.read_csv("./data/train.csv")
 test_df = pd.read_csv("./data/test.csv")
 
@@ -25,7 +26,7 @@ scaler = StandardScaler()
 train_X = scaler.fit_transform(train_X)
 test_X = scaler.transform(test_X)
 
-# Create and train the models
+# Custom SVM
 svm = CustomSVM(C=1.0)
 svm.fit(train_X, train_y)
 
@@ -37,6 +38,19 @@ svm_accuracy = accuracy_score(test_y, y_pred_svm)
 
 # Print accuracy
 print(f"Custom SVM accuracy: {svm_accuracy * 100} %")
+
+# Sci-Kit SVM
+svm = SVC(C=1.0)
+svm.fit(train_X, train_y)
+
+# Make predictions on the test data
+y_pred_svm = svm.predict(test_X)
+
+# Calculate accuracy
+svm_accuracy = accuracy_score(test_y, y_pred_svm)
+
+# Print accuracy
+print(f"Sci-Kit SVM accuracy: {svm_accuracy * 100} %")
 
 # NBC
 Scratch_NBC = Scratch_NBC()
