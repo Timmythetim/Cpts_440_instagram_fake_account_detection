@@ -100,4 +100,4 @@ class NBC:
         gnb = CategoricalNB()
         y_pred = gnb.fit(X_train, y_train).predict(X_test)
         percentage = 100*((y_test == y_pred).sum() / X_test.shape[0])
-        print(f"Scikit-learn Naive Bayes accuracy: {percentage} %")
+        print(f"Scikit-learn Naive Bayes accuracy: {round(percentage, 4)} %")

@@ -16,9 +16,6 @@ class CustomSVM:
             for j in range(n_samples):
                 K[i, j] = np.dot(X[i], X[j])
 
-        # Fix y to be between -1, 1
-        y = np.where(y == 0, -1, 1)
-
         P = matrix(K)
         q = matrix(-np.ones((n_samples, 1)))
         G = matrix(np.vstack((-np.eye(n_samples), np.eye(n_samples))))
@@ -26,6 +23,7 @@ class CustomSVM:
         A = matrix(y.reshape(1, -1).astype(np.double))
         b = matrix(0.0)
 
+        solvers.options['show_progress'] = False
         solution = solvers.qp(P, q, G, h, A, b)
         alphas = np.array(solution['x']).flatten()
 
@@ -44,4 +42,4 @@ class CustomSVM:
 
     def predict(self, X):
         decision_values = np.dot(X, self.weights) + self.bias
-        return np.where(np.sign(decision_values) == -1, 0, 1)
+        return np.sign(decision_values)

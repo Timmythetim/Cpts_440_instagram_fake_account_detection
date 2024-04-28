@@ -13,6 +13,7 @@ class CustomLogisticRegression:
     def fit(self, X, y):
         self.weights = np.zeros(X.shape[1])
         n_samples = X.shape[0]
+        y = np.where(y == -1, 0, 1)
 
         # Iterate over number of training iterations
         for _ in range(self.max_train_iterations):
@@ -32,4 +33,4 @@ class CustomLogisticRegression:
 
     def predict(self, X):
         decision_values = self.sigmoid(np.dot(X, self.weights))
-        return np.where(decision_values >= 0.5, 1, 0)
+        return np.where(decision_values >= 0.5, 1, -1)

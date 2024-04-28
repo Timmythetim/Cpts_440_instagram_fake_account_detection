@@ -21,6 +21,10 @@ train_y = train_df['fake'].to_numpy()  # Convert to NumPy array
 test_X = test_df.drop("fake", axis=1)
 test_y = test_df['fake'].to_numpy()  # Convert to NumPy array
 
+# Fix y to be between -1, 1
+test_y = np.where(test_y == 0, -1, 1)
+train_y = np.where(train_y == 0, -1, 1)
+
 # Preprocess the data (scaling)
 scaler = StandardScaler()
 train_X = scaler.fit_transform(train_X)
@@ -37,7 +41,7 @@ y_pred_svm = svm.predict(test_X)
 svm_accuracy = accuracy_score(test_y, y_pred_svm)
 
 # Print accuracy
-print(f"Custom SVM accuracy: {svm_accuracy * 100} %")
+print(f"Custom SVM accuracy: {round(svm_accuracy * 100, 4)} %")
 
 # Sci-Kit SVM
 svm = SVC(C=1.0)
@@ -50,7 +54,7 @@ y_pred_svm = svm.predict(test_X)
 svm_accuracy = accuracy_score(test_y, y_pred_svm)
 
 # Print accuracy
-print(f"Sci-Kit SVM accuracy: {svm_accuracy * 100} %")
+print(f"Sci-Kit SVM accuracy: {round(svm_accuracy * 100, 4)} %")
 
 # NBC
 Scratch_NBC = Scratch_NBC()
@@ -68,7 +72,7 @@ y_pred_LR = logistic_regression.predict(test_X)
 
 # Find accuracy
 lr_accuracy = accuracy_score(test_y, y_pred_LR)
-print(f"Custom Logistic Regression accuracy: {lr_accuracy * 100} %")
+print(f"Custom Logistic Regression accuracy: {round(lr_accuracy * 100, 4)} %")
 
 # Sci-Kit learn Logistic Regression
 sci_log_regression = LogisticRegression()
@@ -77,6 +81,6 @@ sci_log_regression.fit(train_X, train_y)
 y_pred_sci_lr = sci_log_regression.predict(test_X)
 
 lr_sci_accuracy = accuracy_score(test_y, y_pred_sci_lr)
-print(f"SciKit Logistic Regression accuracy: {lr_sci_accuracy * 100} %")
+print(f"SciKit Logistic Regression accuracy: {round(lr_sci_accuracy * 100, 4)} %")
 
 

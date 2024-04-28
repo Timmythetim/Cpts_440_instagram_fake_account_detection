@@ -166,5 +166,5 @@ class NBC:
             if output[x] == self.test_y[x]:
                 correct += 1
         percentage = 100*(correct / total)
-        print(f"Custom Naive Bayes accuracy: {percentage} %")
+        print(f"Custom Naive Bayes accuracy: {round(percentage, 4)} %")
 
