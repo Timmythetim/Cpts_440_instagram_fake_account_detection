@@ -10,6 +10,7 @@ from SVM import CustomSVM
 from Logistic_Regression_Scratch import CustomLogisticRegression
 from sklearn.linear_model import LogisticRegression
 from sklearn.svm import SVC
+from DecisionForest_Scratch import SimpleDecisionForest
 
 # Data Processing
 train_df = pd.read_csv("./data/train.csv")
@@ -82,5 +83,12 @@ y_pred_sci_lr = sci_log_regression.predict(test_X)
 
 lr_sci_accuracy = accuracy_score(test_y, y_pred_sci_lr)
 print(f"SciKit Logistic Regression accuracy: {round(lr_sci_accuracy * 100, 4)} %")
+
+# Decision Forest
+forest = SimpleDecisionForest(num_trees=10, max_depth=5)
+forest.fit(train_X, train_y)
+y_pred_forest = forest.predict(test_X)
+forest_accuracy = accuracy_score(test_y, y_pred_forest)
+print(f"Decision Forest accuracy: {round(forest_accuracy * 100, 4)} %")
 
 
