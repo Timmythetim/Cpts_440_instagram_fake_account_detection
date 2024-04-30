@@ -4,3 +4,5 @@ tensorflow_decision_forests
 scikit-learn
 numpy
 cvxopt
+matplotlib
+seaborn
