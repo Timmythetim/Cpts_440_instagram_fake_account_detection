@@ -8,9 +8,13 @@ from sklearn.naive_bayes import CategoricalNB, GaussianNB, MultinomialNB
 
 class NBC:
     def __init__(self):
-        self.df = pd.read_csv("./data/total.csv")
-        self.df_X = self.df.drop("fake", axis=1)
-        self.df_y = self.df['fake']
+        train_df = pd.read_csv("./data/train.csv")
+        test_df = pd.read_csv("./data/test.csv")
+        self.train_X = train_df.drop("fake", axis=1)
+        self.train_y = train_df['fake']
+
+        self.test_X = test_df.drop("fake", axis=1)
+        self.test_y = test_df['fake']
 
         self.defaultBinsNum = 4
         self.length_username_bins = []
@@ -20,12 +24,6 @@ class NBC:
         self.num_posts_bins = []
         self.num_followers_bins = []
         self.num_follows_bins = []
-
-        # self.train_X = train_df.drop("fake", axis=1)
-        # self.train_y = train_df['fake']
-
-        # self.test_X = test_df.drop("fake", axis=1)
-        # self.test_y = test_df['fake']
 
         self.priorProbs = {}
         self.conditionalProbs = {}
@@ -95,8 +93,6 @@ class NBC:
     
     def predict(self):
         # Due to the data type, you must keep the random_state the same, as some categories are undefined for some data points, causing a failure for some states.
-        X_train, X_test, y_train, y_test = train_test_split(self.df_X, self.df_y, test_size=0.2, random_state=11)
         gnb = CategoricalNB()
-        y_pred = gnb.fit(X_train, y_train).predict(X_test)
-        percentage = 100*((y_test == y_pred).sum() / X_test.shape[0])
-        print(f"Scikit-learn Naive Bayes accuracy: {round(percentage, 4)} %")
+        y_pred = gnb.fit(self.train_X, self.train_y).predict(self.test_X)
+        return y_pred

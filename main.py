@@ -1,7 +1,5 @@
 from Bayes_From_Scratch import NBC as Scratch_NBC
 from Bayes_Scikit import NBC as Prebuilt_NBC
-from sklearn.datasets import make_classification
-from sklearn.model_selection import train_test_split
 import numpy as np
 import pandas as pd
 from sklearn.preprocessing import StandardScaler
@@ -11,6 +9,7 @@ from Logistic_Regression_Scratch import CustomLogisticRegression
 from sklearn.linear_model import LogisticRegression
 from sklearn.svm import SVC
 from DecisionForest_Scratch import SimpleDecisionForest
+from Model_Hyper_Tuning import ClassifierTuning
 
 # Data Processing
 train_df = pd.read_csv("./data/train.csv")
@@ -31,29 +30,26 @@ scaler = StandardScaler()
 train_X = scaler.fit_transform(train_X)
 test_X = scaler.transform(test_X)
 
+# HyperTune Parameters
+ClassifierTuning.decisionTreeHyperTuning(train_X, train_y, test_X, test_y)
+ClassifierTuning.handmadeLogisticalRegressionHyperTuning(train_X, train_y, test_X, test_y)
+ClassifierTuning.prebuiltLogisticalRegressionHyperTuning(train_X, train_y, test_X, test_y)
+ClassifierTuning.handmadeSVMHyperTuning(train_X, train_y, test_X, test_y)
+ClassifierTuning.prebuiltSVMHyperTuning(train_X, train_y, test_X, test_y)
+
 # Custom SVM
 svm = CustomSVM(C=1.0)
 svm.fit(train_X, train_y)
-
-# Make predictions on the test data
 y_pred_svm = svm.predict(test_X)
-
-# Calculate accuracy
 svm_accuracy = accuracy_score(test_y, y_pred_svm)
-
 # Print accuracy
 print(f"Custom SVM accuracy: {round(svm_accuracy * 100, 4)} %")
 
 # Sci-Kit SVM
 svm = SVC(C=1.0)
 svm.fit(train_X, train_y)
-
-# Make predictions on the test data
 y_pred_svm = svm.predict(test_X)
-
-# Calculate accuracy
 svm_accuracy = accuracy_score(test_y, y_pred_svm)
-
 # Print accuracy
 print(f"Sci-Kit SVM accuracy: {round(svm_accuracy * 100, 4)} %")
 
@@ -67,20 +63,14 @@ Prebuilt_NBC.predict()
 # Create and train the model
 logistic_regression = CustomLogisticRegression(C = 0, learning_rate=0.001, max_train_iterations=100)
 logistic_regression.fit(train_X, train_y)
-
-# Predict based on model
 y_pred_LR = logistic_regression.predict(test_X)
-
-# Find accuracy
 lr_accuracy = accuracy_score(test_y, y_pred_LR)
 print(f"Custom Logistic Regression accuracy: {round(lr_accuracy * 100, 4)} %")
 
 # Sci-Kit learn Logistic Regression
 sci_log_regression = LogisticRegression()
 sci_log_regression.fit(train_X, train_y)
-
 y_pred_sci_lr = sci_log_regression.predict(test_X)
-
 lr_sci_accuracy = accuracy_score(test_y, y_pred_sci_lr)
 print(f"SciKit Logistic Regression accuracy: {round(lr_sci_accuracy * 100, 4)} %")
 
