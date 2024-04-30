@@ -13,8 +13,8 @@ test_df = pandas.read_csv("./data/test.csv")
 
 test_ds = tfdf.keras.pd_dataframe_to_tf_dataset(test_df, label="fake")
 
-# model.compile(metrics=['accuracy'])
-# print(model.evaluate(test_ds))
+model.compile(metrics=['accuracy'])
+print(model.evaluate(test_ds))
 
 # test_df = pandas.read_csv("./data/testcsv")
 

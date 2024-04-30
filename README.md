@@ -19,7 +19,7 @@ accounts that are correctly identified by the model. And lastly, specificity, wh
 proportion of actual genuine accounts that are correctly identified by the model.
 
 
-### Prerequisites
+## Prerequisites
 
 This project need to install package inside requirement.txt first (highly recommended to make a virtual environment first):
   ```sh
@@ -33,3 +33,37 @@ Or with python3:
   ```sh
   python3 main.py
   ```
+
+## Description Of Files
+
+The file names tend to describe them accurately, but here we will provide a brief explaination of each.
+
+### Bayes_From_Scratch.py
+This file is a Naive Bayes Classifier from scratch by Tim, using our training data. Some concessions had to be made during the training,
+as the distribution of the data made it difficult to work with. First we modified the data, instead of raw values, we transformed
+the data into categorical data to calculate the probabilities. Due to these classifications, some data points did not have probabilities
+for every "bin". We skipped these values when calculating if any were missing, only including values where all probabilities were available.
+This led to a small hit in accuracy, but with a larger data set it would have been even less of a hit.
+
+### Bayes_Scikit
+This file is a Naive Bayes Classifier as implemented by the Scikit-learn library. Coded by Tim, There are some utilities to set up the data for
+the model.
+
+### DecisionForest_Scratch.py
+This file is a Decision Forest from Scratch. Coded by Nazar, he implemented the decision forest from scratch with comparable accuracy
+to the prebuilt model.
+
+### Decision_Forest_Tensorflow.py
+This file is a Decision Forest from Tensorflow. Coded by Tim, with some modifications by Nazar, it is a simple implementation.
+
+### Logistic_Regression_Scratch.py
+This file is the Logistic Regression model from scratch. Coded by William, he implemented this from scratch with some utilities and 
+achieved comparable accuracy to the prebuilt model.
+
+### SVM / SVM_test.py
+These files are the implementation of a Support Vector Machine by hand. Coded by Kwan Tou, this model achieved comparable accuracy
+to the prebuilt SVM.
+
+Some of the implementations of the prebuilt models were so simple that they were only included in the demo notebook of our project, 
+found here. https://colab.research.google.com/drive/1UVLXh2PSKmKS9cCmW4YkWjfEbtxWLhBj#scrollTo=kZI7K8uv7xTR
+Please note the top section about importing data, as it will not work without the data imported.
