@@ -8,22 +8,20 @@ Instagram's extremely large user base, necessitating an automated solution to ac
 the presence of these fake accounts. The data we use is collected from kaggle data collection,
 more specifically will be instagram fake spammer genuine accounts
 datasets.(https://www.kaggle.com/datasets/free4ever1/instagram-fake-spammer-genuine-account
-) Some preparation for the data using python and pandas libraries might be needed. We will be
-using Decision Trees as our algorithm due to it being simple to implement, the way it can handle
-both numerical and categorical data. This algorithm is also quite intuitive, therefore it will be
-easier to understand the reasoning behind a decision. Then, we will measure the model’s
-accuracy, the overall correctness of the model's predictions, and Precision which measures the
+) Some preparation for the data using python and pandas libraries was needed for all model types. Initially, 
+we planned to use just a decision tree, however this proved too trivial. We pivoted and each team member 
+chose a model to implement and compare against a prebuilt version. We ended up implementing 
+a Naive Bayes Classifier, SVM, Decision Tree, and Logistic Regression. After implementation, we measured each 
+model’s accuracy, the overall correctness of the model's predictions, and Precision which measures the
 proportion of correctly identified fake accounts among all the instances predicted as fake. Then,
-we also measure Sensitivity or True Positive Rate, which is the proportion of actual fake
+we also measured Sensitivity or True Positive Rate, which is the proportion of actual fake
 accounts that are correctly identified by the model. And lastly, specificity, which measures the
 proportion of actual genuine accounts that are correctly identified by the model.
-As a back-up, we have the Logistic Regression algorithm in mind, if the original plan using the
-Decision Trees algorithm fails or proves too challenging.
 
 
 ### Prerequisites
 
-This project need to install package inside requirement.txt first:
+This project need to install package inside requirement.txt first (highly recommended to make a virtual environment first):
   ```sh
   pip install -r requirements.txt
   ```
