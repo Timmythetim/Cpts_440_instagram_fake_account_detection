@@ -64,6 +64,9 @@ achieved comparable accuracy to the prebuilt model.
 These files are the implementation of a Support Vector Machine by hand. Coded by Kwan Tou, this model achieved comparable accuracy
 to the prebuilt SVM.
 
+### test.py
+This file is not very significant, and could be removed. It was included for initial testing with the Decision Forest.
+
 Some of the implementations of the prebuilt models were so simple that they were only included in the demo notebook of our project, 
 found here. https://colab.research.google.com/drive/1UVLXh2PSKmKS9cCmW4YkWjfEbtxWLhBj#scrollTo=kZI7K8uv7xTR
 Please note the top section about importing data, as it will not work without the data imported.
