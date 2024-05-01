@@ -19,8 +19,8 @@ accounts that are correctly identified by the model. And lastly, specificity, wh
 proportion of actual genuine accounts that are correctly identified by the model.
 
 # Demo Links
+[Colab Demo](https://youtu.be/ONreByLg5G8) \
 [Presentation Demo](https://youtu.be/ONreByLg5G8)
-[Colab Demo](https://youtu.be/ONreByLg5G8)
 
 ## Prerequisites
 
