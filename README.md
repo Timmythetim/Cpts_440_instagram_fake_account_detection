@@ -7,8 +7,8 @@ challenge. Manually distinguishing between real and fake accounts is impractical
 Instagram's extremely large user base, necessitating an automated solution to accurately identify
 the presence of these fake accounts. The data we use is collected from kaggle data collection,
 more specifically will be instagram fake spammer genuine accounts
-datasets.(https://www.kaggle.com/datasets/free4ever1/instagram-fake-spammer-genuine-account
-) Some preparation for the data using python and pandas libraries was needed for all model types. Initially, 
+datasets [[1]](https://www.kaggle.com/datasets/free4ever1/instagram-fake-spammer-genuine-account).
+Some preparation for the data using python and pandas libraries was needed for all model types. Initially, 
 we planned to use just a decision tree, however this proved too trivial. We pivoted and each team member 
 chose a model to implement and compare against a prebuilt version. We ended up implementing 
 a Naive Bayes Classifier, SVM, Decision Tree, and Logistic Regression. After implementation, we measured each 
@@ -18,6 +18,9 @@ we also measured Sensitivity or True Positive Rate, which is the proportion of a
 accounts that are correctly identified by the model. And lastly, specificity, which measures the
 proportion of actual genuine accounts that are correctly identified by the model.
 
+# Demo Links
+[Presentation Demo](https://youtu.be/ONreByLg5G8)
+[Colab Demo](https://youtu.be/ONreByLg5G8)
 
 ## Prerequisites
 
